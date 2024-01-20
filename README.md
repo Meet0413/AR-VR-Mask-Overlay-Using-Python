@@ -30,7 +30,7 @@ This repository contains a Python script using the OpenCV library to perform rea
 
 2. Run the script:
 
-    python AR Mask Overlay Code.py
+    python real-time-face-mask-overlay
     
 
 3. Quit the application:
