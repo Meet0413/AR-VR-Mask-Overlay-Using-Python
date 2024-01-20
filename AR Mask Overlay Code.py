@@ -4,7 +4,7 @@ import cv2
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
 # Load the mask image
-mask = cv2.imread(r"C:\Users\kanan\Desktop\pngegg (1).png", cv2.IMREAD_UNCHANGED)
+mask = cv2.imread(r"Input your Path\pngegg (1).png", cv2.IMREAD_UNCHANGED)
 
 # Open the webcam (you can change the argument to the camera index if needed)
 cap = cv2.VideoCapture(0)
