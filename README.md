@@ -38,6 +38,35 @@ This repository contains a Python script using the OpenCV library to perform rea
     Press 'q' to exit the application.
 
 
+
+
+**Virtual Reality Face Mask Overlay VR**
+
+
+
+
+**Introduction**
+This Python script demonstrates face detection in a virtual reality (VR) environment using the OpenCV library and overlays masks on detected faces. The script is designed to showcase the integration of computer vision techniques into a VR setting, providing an augmented reality experience.
+
+
+
+**Prerequisites**
+•	Python 3.x
+•	OpenCV (install with pip install opencv-python)
+
+
+
+**Usage**
+1.	Clone the Repository:
+•	VR-Mask-Overlay-Using-Python
+2.	Install Dependencies:
+•	pip install opencv-python 
+3.	Run the Script:
+•	python vr-face-mask-overlay.py 
+4.	Quit the Application:
+•	Press the 'q' key to exit the VR face mask overlay.
+
+
 **Notes**
 
 - Ensure the Haar Cascade XML file for face detection is available in the OpenCV data folder.
