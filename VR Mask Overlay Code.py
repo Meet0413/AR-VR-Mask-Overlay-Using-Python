@@ -18,7 +18,7 @@ if not file_path:
     exit()
 
 # Load the mask image
-mask = cv2.imread(r"C:\Users\kanan\Desktop\pngegg (1).png", cv2.IMREAD_UNCHANGED)
+mask = cv2.imread(r"CYour path\pngegg (1).png", cv2.IMREAD_UNCHANGED)
 
 # Open the selected image
 frame = cv2.imread(file_path)
