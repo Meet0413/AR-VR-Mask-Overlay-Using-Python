@@ -1,10 +1,26 @@
 import cv2
+import tkinter as tk
+from tkinter import filedialog
 
 # Load the pre-trained face detection model
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
+# Create a Tkinter root window (it will not be shown)
+root = tk.Tk()
+root.withdraw()  # Hide the main window
+
+# Ask the user to select the mask image file
+print("Please select the mask image in PNG format:")
+mask_path = filedialog.askopenfilename(title="Select Mask Image", filetypes=[("PNG files", "*.png")])
+
+if not mask_path:
+    print("No mask selected. Exiting...")
+    exit()
+
+# Print the selected mask image path
+print("Mask image selected:", mask_path)
 # Load the mask image
-mask = cv2.imread(r"Input your Path\pngegg (1).png", cv2.IMREAD_UNCHANGED)
+mask = cv2.imread(mask_path, cv2.IMREAD_UNCHANGED)
 
 # Open the webcam (you can change the argument to the camera index if needed)
 cap = cv2.VideoCapture(0)
@@ -17,7 +33,7 @@ while True:
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     # Detect faces in the frame
-    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5)
+    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.8, minNeighbors=3)
 
     # Overlay the mask on each detected face
     for (x, y, w, h) in faces:
