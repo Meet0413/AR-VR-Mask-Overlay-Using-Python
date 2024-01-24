@@ -67,10 +67,7 @@ This Python script demonstrates face detection in a virtual reality (VR) environ
 •	Press the 'q' key to exit the VR face mask overlay.
 
 
-**Notes**
 
-- Ensure the Haar Cascade XML file for face detection is available in the OpenCV data folder.
-- **Adjust the mask image path as needed** (`mask = cv2.imread("path/to/mask.png", cv2.IMREAD_UNCHANGED`).
 
 **Contribution**
 Feel free to contribute or provide feedback! Create an issue, open a pull request, or reach out with suggestions.
