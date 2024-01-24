@@ -1,4 +1,3 @@
-
 import cv2
 import tkinter as tk
 from tkinter import filedialog
@@ -11,26 +10,42 @@ root = tk.Tk()
 root.withdraw()
 
 # Ask the user to select an image file
-file_path = filedialog.askopenfilename(title="Select Image", filetypes=[("All files", "*.jpg;*.jpeg;*.png")])
+print("Please select the face image of human:")
+file_path = filedialog.askopenfilename(title="Select Image", filetypes=[("Image files", "*.jpg;*.jpeg;*.png")])
 
 if not file_path:
     print("No file selected. Exiting...")
     exit()
 
-# Load the mask image
-mask = cv2.imread(r"CYour path\pngegg (1).png", cv2.IMREAD_UNCHANGED)
+# Print the selected image path
+print("Image selected:", file_path)
 
-# Open the selected image
+# Ask the user to select a mask image file
+print("Please select the mask image in PNG format:")
+mask_path = filedialog.askopenfilename(title="Select Mask Image", filetypes=[("PNG files", "*.png")])
+
+if not mask_path:
+    print("No mask selected. Exiting...")
+    exit()
+
+# Print the selected mask image path
+print("Mask image selected:", mask_path)
+
+# Load the selected image
 frame = cv2.imread(file_path)
-
 # Convert the frame to grayscale for face detection
 gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
 # Detect faces in the frame
-faces = face_cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5)
+faces = face_cascade.detectMultiScale(gray, scaleFactor=1.8, minNeighbors=5)
 
-# Overlay the mask on each detected face
+# Load the mask image with an alpha channel
+mask = cv2.imread(mask_path, cv2.IMREAD_UNCHANGED)
+
+# Iterate over each detected face
 for (x, y, w, h) in faces:
+    print("Detected Face Coordinates (x, y, w, h):", x, y, w, h)
+
     # Resize the mask to fit the detected face
     resized_mask = cv2.resize(mask, (w, h), interpolation=cv2.INTER_AREA)
 
@@ -45,7 +60,7 @@ for (x, y, w, h) in faces:
         roi[:, :, c] = roi[:, :, c] * (1 - mask_alpha) + resized_mask[:, :, c] * mask_alpha
 
 # Display the frame with face detection and the mask overlay
-cv2.imshow('Virtual Face with Mask Overlay', frame)
+cv2.imshow('Virtual Faces with Mask Overlay', frame)
 
 # Wait for a key press and close the window
 cv2.waitKey(0)
